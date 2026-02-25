@@ -1,0 +1,42 @@
+<Window x:Class="EnglishLearningApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="English Learning Companion" Height="700" Width="1000"
+        Background="#F5F5F5">
+    <DockPanel>
+        <!-- Sidebar Navigation -->
+        <StackPanel DockPanel.Dock="Left" Width="200" Background="#2C3E50" Padding="10">
+            <TextBlock Text="English Learning App" Foreground="White" FontSize="14" FontWeight="Bold" Margin="0,10,0,20" TextWrapping="Wrap"/>
+            
+            <!-- Statistics -->
+            <Border Background="#34495E" CornerRadius="5" Padding="10" Margin="0,0,0,10">
+                <StackPanel>
+                    <TextBlock Text="Statistics" Foreground="White" FontSize="12" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,3">
+                        <TextBlock Text="Words: " Foreground="#BDC3C7" FontSize="11"/>
+                        <TextBlock Text="{Binding TotalWords}" Foreground="#3498DB" FontSize="11" FontWeight="Bold"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,3">
+                        <TextBlock Text="Mastered: " Foreground="#BDC3C7" FontSize="11"/>
+                        <TextBlock Text="{Binding MasterWords}" Foreground="#2ECC71" FontSize="11" FontWeight="Bold"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,3">
+                        <TextBlock Text="Review Due: " Foreground="#BDC3C7" FontSize="11"/>
+                        <TextBlock Text="{Binding ReviewDue}" Foreground="#E74C3C" FontSize="11" FontWeight="Bold"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Navigation Buttons -->
+            <Button Command="{Binding NavigateDashboardCommand}" Style="{StaticResource NavButton}" Content="📊 Dashboard" Margin="0,5"/>
+            <Button Command="{Binding NavigateFlashcardsCommand}" Style="{StaticResource NavButton}" Content="🃏 Flashcards" Margin="0,5"/>
+            <Button Command="{Binding NavigateQuizCommand}" Style="{StaticResource NavButton}" Content="✏️ Quiz" Margin="0,5"/>
+            <Button Command="{Binding NavigatePronunciationCommand}" Style="{StaticResource NavButton}" Content="🔊 Pronunciation" Margin="0,5"/>
+            <Button Command="{Binding NavigateProgressCommand}" Style="{StaticResource NavButton}" Content="📈 Progress" Margin="0,5"/>
+            <Button Command="{Binding ImportWordsCommand}" Style="{StaticResource NavButton}" Content="📥 Import Words" Margin="0,5"/>
+        </StackPanel>
+
+        <!-- Content Area -->
+        <ContentControl Content="{Binding CurrentView}" DockPanel.Dock="Right"/>
+    </DockPanel>
+</Window>
